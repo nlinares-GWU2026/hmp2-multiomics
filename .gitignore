@@ -1,0 +1,9 @@
+data/raw/
+*.gz
+*.tsv.gz
+*.rds
+*.Rhistory
+.Rproj.user/
+__pycache__/
+.DS_Store
+*.log

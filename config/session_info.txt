@@ -1,0 +1,77 @@
+> 
+> library(Maaslin2)
+> library(mixOmics)
+Loading required package: MASS
+Loading required package: lattice
+Loading required package: ggplot2
+
+Loaded mixOmics 6.26.0
+Thank you for using mixOmics!
+Tutorials: http://mixomics.org
+Bookdown vignette: https://mixomicsteam.github.io/Bookdown
+Questions, issues: Follow the prompts at http://mixomics.org/contact-us
+Cite us:  citation('mixOmics')
+
+> library(dplyr)
+
+Attaching package: ‘dplyr’
+
+The following object is masked from ‘package:MASS’:
+
+    select
+
+The following objects are masked from ‘package:stats’:
+
+    filter, lag
+
+The following objects are masked from ‘package:base’:
+
+    intersect, setdiff, setequal, union
+
+> library(tidyr)
+> library(readr)
+> sessionInfo()
+R version 4.3.3 (2024-02-29)
+Platform: x86_64-pc-linux-gnu (64-bit)
+Running under: Ubuntu 24.04.3 LTS
+
+Matrix products: default
+BLAS:   /usr/lib/x86_64-linux-gnu/blas/libblas.so.3.12.0 
+LAPACK: /usr/lib/x86_64-linux-gnu/lapack/liblapack.so.3.12.0
+
+locale:
+ [1] LC_CTYPE=C.UTF-8       LC_NUMERIC=C           LC_TIME=C.UTF-8       
+ [4] LC_COLLATE=C.UTF-8     LC_MONETARY=C.UTF-8    LC_MESSAGES=C.UTF-8   
+ [7] LC_PAPER=C.UTF-8       LC_NAME=C              LC_ADDRESS=C          
+[10] LC_TELEPHONE=C         LC_MEASUREMENT=C.UTF-8 LC_IDENTIFICATION=C   
+
+time zone: America/New_York
+tzcode source: system (glibc)
+
+attached base packages:
+[1] stats     graphics  grDevices utils     datasets  methods   base     
+
+other attached packages:
+[1] readr_2.2.0     tidyr_1.3.2     dplyr_1.2.1     mixOmics_6.26.0
+[5] ggplot2_4.0.3   lattice_0.22-5  MASS_7.3-60.0.1 Maaslin2_1.15.1
+
+loaded via a namespace (and not attached):
+ [1] generics_0.1.4      robustbase_0.99-7   stringi_1.8.7      
+ [4] hms_1.1.4           magrittr_2.0.5      grid_4.3.3         
+ [7] RColorBrewer_1.1-3  mvtnorm_1.3-7       plyr_1.8.9         
+[10] Matrix_1.6-5        ggrepel_0.9.8       RSpectra_0.16-2    
+[13] DBI_1.3.0           optparse_1.8.2      biglm_0.9-3        
+[16] gridExtra_2.3       purrr_1.2.2         scales_1.4.0       
+[19] codetools_0.2-19    cli_3.6.6           rlang_1.2.0        
+[22] withr_3.0.2         ellipse_0.5.0       tools_4.3.3        
+[25] parallel_4.3.3      tzdb_0.5.0          reshape2_1.4.5     
+[28] BiocParallel_1.36.0 corpcor_1.6.10      vctrs_0.7.3        
+[31] R6_2.6.1            matrixStats_1.5.0   lifecycle_1.0.5    
+[34] stringr_1.6.0       pcaPP_2.0-5         pkgconfig_2.0.3    
+[37] pillar_1.11.1       gtable_0.3.6        glue_1.8.1         
+[40] rARPACK_0.11-0      Rcpp_1.1.1-1.1      DEoptimR_1.1-4     
+[43] tibble_3.3.1        tidyselect_1.2.1    farver_2.1.2       
+[46] igraph_2.3.1        compiler_4.3.3      S7_0.2.2           
+> 
+> 
+> 

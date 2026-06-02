@@ -1,0 +1,798 @@
+
+Attaching package: ‘dplyr’
+
+The following objects are masked from ‘package:stats’:
+
+    filter, lag
+
+The following objects are masked from ‘package:base’:
+
+    intersect, setdiff, setequal, union
+
+=== Step 1: Loading processed data ===
+Microbiome: 1317 samples x 122 species
+Metabolomics: 388 samples x 66717 metabolites
+Metadata: 1317 samples
+
+=== Step 2: Selecting top 500 most variable metabolites ===
+Selected top 500 of 66717 metabolites by variance
+
+=== Step 3: Aligning samples across datasets ===
+Microbiome samples: 1317 
+Metabolomics samples: 388 
+Metadata samples: 1317 
+Samples in ALL three: 388 
+
+Final diagnosis breakdown:
+
+    CD nonIBD     UC 
+   181    105    102 
+
+=== Step 4a: Running MaAsLin2 on microbiome ===
+Testing 122 species against IBD diagnosis...
+This should take 1-3 minutes
+
+[1] "Warning: Deleting existing log file: results/maaslin2/microbiome/maaslin2.log"
+2026-06-02 12:11:45.904164 INFO::Writing function arguments to log file
+2026-06-02 12:11:45.999104 INFO::Verifying options selected are valid
+2026-06-02 12:11:46.019347 INFO::Determining format of input files
+2026-06-02 12:11:46.022432 INFO::Input format is data samples as rows and metadata samples as rows
+2026-06-02 12:11:46.03994 INFO::Formula for random effects: expr ~ (1 | participant_id)
+2026-06-02 12:11:46.044539 INFO::Formula for fixed effects: expr ~  diagnosis
+2026-06-02 12:11:46.054341 INFO::Filter data based on min abundance and min prevalence
+2026-06-02 12:11:46.059811 INFO::Total samples in data: 388
+2026-06-02 12:11:46.068268 INFO::Min samples required with min abundance for a feature not to be filtered: 0.000000
+2026-06-02 12:11:46.074512 INFO::Total filtered features: 0
+2026-06-02 12:11:46.083674 INFO::Filtered feature names from abundance and prevalence filtering:
+2026-06-02 12:11:46.090773 INFO::Total filtered features with variance filtering: 0
+2026-06-02 12:11:46.094923 INFO::Filtered feature names from variance filtering:
+2026-06-02 12:11:46.101304 INFO::Running selected normalization method: NONE
+2026-06-02 12:11:46.106669 INFO::Applying z-score to standardize continuous metadata
+2026-06-02 12:11:46.124007 INFO::Running selected transform method: NONE
+2026-06-02 12:11:46.126776 INFO::Running selected analysis method: LM
+2026-06-02 12:11:46.692194 INFO::Fitting model to feature number 1, s__Bifidobacterium_adolescentis
+2026-06-02 12:11:46.963416 INFO::Fitting model to feature number 2, s__Bifidobacterium_bifidum
+2026-06-02 12:11:46.991206 INFO::Fitting model to feature number 3, s__Bifidobacterium_longum
+2026-06-02 12:11:47.095346 INFO::Fitting model to feature number 4, s__Bifidobacterium_pseudocatenulatum
+2026-06-02 12:11:47.122198 INFO::Fitting model to feature number 5, s__Collinsella_aerofaciens
+2026-06-02 12:11:47.261379 INFO::Fitting model to feature number 6, s__Collinsella_intestinalis
+2026-06-02 12:11:47.286185 INFO::Fitting model to feature number 7, s__Collinsella_stercoris
+2026-06-02 12:11:47.311033 INFO::Fitting model to feature number 8, s__Eggerthella_lenta
+2026-06-02 12:11:47.335957 INFO::Fitting model to feature number 9, s__Bacteroides_caccae
+2026-06-02 12:11:47.361439 INFO::Fitting model to feature number 10, s__Bacteroides_cellulosilyticus
+2026-06-02 12:11:47.387208 INFO::Fitting model to feature number 11, s__Bacteroides_dorei
+2026-06-02 12:11:47.411964 INFO::Fitting model to feature number 12, s__Bacteroides_eggerthii
+2026-06-02 12:11:47.446125 INFO::Fitting model to feature number 13, s__Bacteroides_faecis
+2026-06-02 12:11:47.47033 INFO::Fitting model to feature number 14, s__Bacteroides_faecis_CAG_32
+2026-06-02 12:11:47.497068 INFO::Fitting model to feature number 15, s__Bacteroides_finegoldii
+2026-06-02 12:11:47.521479 INFO::Fitting model to feature number 16, s__Bacteroides_fragilis
+2026-06-02 12:11:47.545958 INFO::Fitting model to feature number 17, s__Bacteroides_massiliensis
+2026-06-02 12:11:47.574699 INFO::Fitting model to feature number 18, s__Bacteroides_ovatus
+2026-06-02 12:11:47.607974 INFO::Fitting model to feature number 19, s__Bacteroides_stercoris
+2026-06-02 12:11:47.632826 INFO::Fitting model to feature number 20, s__Bacteroides_thetaiotaomicron
+2026-06-02 12:11:47.656772 INFO::Fitting model to feature number 21, s__Bacteroides_uniformis
+2026-06-02 12:11:47.681852 INFO::Fitting model to feature number 22, s__Bacteroides_vulgatus
+2026-06-02 12:11:47.70612 INFO::Fitting model to feature number 23, s__Bacteroides_xylanisolvens
+2026-06-02 12:11:47.731835 INFO::Fitting model to feature number 24, s__Barnesiella_intestinihominis
+2026-06-02 12:11:47.755703 INFO::Fitting model to feature number 25, s__Coprobacter_fastidiosus
+2026-06-02 12:11:47.787464 INFO::Fitting model to feature number 26, s__Butyricimonas_synergistica
+2026-06-02 12:11:47.811803 INFO::Fitting model to feature number 27, s__Butyricimonas_virosa
+2026-06-02 12:11:47.837238 INFO::Fitting model to feature number 28, s__Odoribacter_splanchnicus
+2026-06-02 12:11:47.861938 INFO::Fitting model to feature number 29, s__Paraprevotella_xylaniphila
+2026-06-02 12:11:47.887912 INFO::Fitting model to feature number 30, s__Prevotella_copri
+2026-06-02 12:11:47.911958 INFO::Fitting model to feature number 31, s__Alistipes_finegoldii
+2026-06-02 12:11:47.93681 INFO::Fitting model to feature number 32, s__Alistipes_indistinctus
+2026-06-02 12:11:47.970453 INFO::Fitting model to feature number 33, s__Alistipes_putredinis
+2026-06-02 12:11:47.994504 INFO::Fitting model to feature number 34, s__Alistipes_shahii
+2026-06-02 12:11:48.018975 INFO::Fitting model to feature number 35, s__Parabacteroides_distasonis
+2026-06-02 12:11:48.043237 INFO::Fitting model to feature number 36, s__Parabacteroides_goldsteinii
+2026-06-02 12:11:48.068206 INFO::Fitting model to feature number 37, s__Parabacteroides_merdae
+2026-06-02 12:11:48.092571 INFO::Fitting model to feature number 38, s__Lactobacillus_rogosae
+2026-06-02 12:11:48.116541 INFO::Fitting model to feature number 39, s__Streptococcus_parasanguinis
+2026-06-02 12:11:48.150297 INFO::Fitting model to feature number 40, s__Streptococcus_salivarius
+2026-06-02 12:11:48.175152 INFO::Fitting model to feature number 41, s__Streptococcus_thermophilus
+2026-06-02 12:11:48.199809 INFO::Fitting model to feature number 42, s__Clostridium_bolteae_CAG_59
+2026-06-02 12:11:48.224834 INFO::Fitting model to feature number 43, s__Clostridium_sp_CAG_242
+2026-06-02 12:11:48.250635 INFO::Fitting model to feature number 44, s__Clostridium_sp_CAG_58
+2026-06-02 12:11:48.27488 INFO::Fitting model to feature number 45, s__Hungatella_hathewayi
+2026-06-02 12:11:48.307314 INFO::Fitting model to feature number 46, s__Intestinimonas_butyriciproducens
+2026-06-02 12:11:48.33149 INFO::Fitting model to feature number 47, s__Lawsonibacter_asaccharolyticus
+2026-06-02 12:11:48.355969 INFO::Fitting model to feature number 48, s__Monoglobus_pectinilyticus
+2026-06-02 12:11:48.380696 INFO::Fitting model to feature number 49, s__Eubacterium_eligens
+2026-06-02 12:11:48.40594 INFO::Fitting model to feature number 50, s__Eubacterium_hallii
+2026-06-02 12:11:48.431202 INFO::Fitting model to feature number 51, s__Eubacterium_ramulus
+2026-06-02 12:11:48.454661 INFO::Fitting model to feature number 52, s__Eubacterium_sp_CAG_38
+2026-06-02 12:11:48.486334 INFO::Fitting model to feature number 53, s__Eubacterium_ventriosum
+2026-06-02 12:11:48.510733 INFO::Fitting model to feature number 54, s__Anaerostipes_hadrus
+2026-06-02 12:11:48.534921 INFO::Fitting model to feature number 55, s__Anaerotignum_lactatifermentans
+2026-06-02 12:11:48.55905 INFO::Fitting model to feature number 56, s__Blautia_obeum
+2026-06-02 12:11:48.583154 INFO::Fitting model to feature number 57, s__Blautia_sp_CAG_257
+2026-06-02 12:11:48.60676 INFO::Fitting model to feature number 58, s__Blautia_wexlerae
+2026-06-02 12:11:48.630493 INFO::Fitting model to feature number 59, s__Ruminococcus_gnavus
+2026-06-02 12:11:48.664541 INFO::Fitting model to feature number 60, s__Ruminococcus_torques
+2026-06-02 12:11:48.68951 INFO::Fitting model to feature number 61, s__Coprococcus_catus
+2026-06-02 12:11:48.721526 INFO::Fitting model to feature number 62, s__Coprococcus_comes
+2026-06-02 12:11:48.745428 INFO::Fitting model to feature number 63, s__Dorea_formicigenerans
+2026-06-02 12:11:48.771085 INFO::Fitting model to feature number 64, s__Dorea_longicatena
+2026-06-02 12:11:48.794914 INFO::Fitting model to feature number 65, s__Eisenbergiella_massiliensis
+2026-06-02 12:11:48.818802 INFO::Fitting model to feature number 66, s__Eisenbergiella_tayi
+2026-06-02 12:11:48.851813 INFO::Fitting model to feature number 67, s__Fusicatenibacter_saccharivorans
+2026-06-02 12:11:48.875957 INFO::Fitting model to feature number 68, s__Clostridium_aldenense
+2026-06-02 12:11:48.906291 INFO::Fitting model to feature number 69, s__Clostridium_asparagiforme
+2026-06-02 12:11:48.930069 INFO::Fitting model to feature number 70, s__Clostridium_bolteae
+2026-06-02 12:11:48.956517 INFO::Fitting model to feature number 71, s__Clostridium_citroniae
+2026-06-02 12:11:48.980072 INFO::Fitting model to feature number 72, s__Clostridium_clostridioforme
+2026-06-02 12:11:49.01324 INFO::Fitting model to feature number 73, s__Clostridium_lavalense
+2026-06-02 12:11:49.039097 INFO::Fitting model to feature number 74, s__Clostridium_saccharolyticum
+2026-06-02 12:11:49.064119 INFO::Fitting model to feature number 75, s__Clostridium_symbiosum
+2026-06-02 12:11:49.093367 INFO::Fitting model to feature number 76, s__Lachnospira_pectinoschiza
+2026-06-02 12:11:49.118032 INFO::Fitting model to feature number 77, s__Eubacterium_rectale
+2026-06-02 12:11:49.142613 INFO::Fitting model to feature number 78, s__Roseburia_faecis
+2026-06-02 12:11:49.166401 INFO::Fitting model to feature number 79, s__Roseburia_hominis
+2026-06-02 12:11:49.199135 INFO::Fitting model to feature number 80, s__Roseburia_intestinalis
+2026-06-02 12:11:49.223149 INFO::Fitting model to feature number 81, s__Roseburia_inulinivorans
+2026-06-02 12:11:49.255173 INFO::Fitting model to feature number 82, s__Sellimonas_intestinalis
+2026-06-02 12:11:49.280262 INFO::Fitting model to feature number 83, s__Oscillibacter_sp_57_20
+2026-06-02 12:11:49.305792 INFO::Fitting model to feature number 84, s__Oscillibacter_sp_CAG_241
+2026-06-02 12:11:49.331181 INFO::Fitting model to feature number 85, s__Intestinibacter_bartlettii
+2026-06-02 12:11:49.355808 INFO::Fitting model to feature number 86, s__Agathobaculum_butyriciproducens
+2026-06-02 12:11:49.388277 INFO::Fitting model to feature number 87, s__Anaeromassilibacillus_sp_An250
+2026-06-02 12:11:49.412244 INFO::Fitting model to feature number 88, s__Anaerotruncus_colihominis
+2026-06-02 12:11:49.439753 INFO::Fitting model to feature number 89, s__Faecalibacterium_prausnitzii
+2026-06-02 12:11:49.463287 INFO::Fitting model to feature number 90, s__Flavonifractor_plautii
+2026-06-02 12:11:49.487842 INFO::Fitting model to feature number 91, s__Gemmiger_formicilis
+2026-06-02 12:11:49.511362 INFO::Fitting model to feature number 92, s__Clostridium_leptum
+2026-06-02 12:11:49.535384 INFO::Fitting model to feature number 93, s__Eubacterium_siraeum
+2026-06-02 12:11:49.580115 INFO::Fitting model to feature number 94, s__Ruminococcaceae_bacterium_D16
+2026-06-02 12:11:49.607276 INFO::Fitting model to feature number 95, s__Ruminococcus_bicirculans
+2026-06-02 12:11:49.632486 INFO::Fitting model to feature number 96, s__Ruminococcus_bromii
+2026-06-02 12:11:49.663418 INFO::Fitting model to feature number 97, s__Ruminococcus_lactaris
+2026-06-02 12:11:49.691121 INFO::Fitting model to feature number 98, s__Ruthenibacterium_lactatiformans
+2026-06-02 12:11:49.715047 INFO::Fitting model to feature number 99, s__Dielma_fastidiosa
+2026-06-02 12:11:49.749635 INFO::Fitting model to feature number 100, s__Clostridium_innocuum
+2026-06-02 12:11:49.773665 INFO::Fitting model to feature number 101, s__Clostridium_spiroforme
+2026-06-02 12:11:49.797658 INFO::Fitting model to feature number 102, s__Erysipelatoclostridium_ramosum
+2026-06-02 12:11:49.827924 INFO::Fitting model to feature number 103, s__Holdemania_filiformis
+2026-06-02 12:11:49.852136 INFO::Fitting model to feature number 104, s__Firmicutes_bacterium_CAG_83
+2026-06-02 12:11:49.876337 INFO::Fitting model to feature number 105, s__Firmicutes_bacterium_CAG_94
+2026-06-02 12:11:49.900591 INFO::Fitting model to feature number 106, s__Acidaminococcus_intestini
+2026-06-02 12:11:49.934431 INFO::Fitting model to feature number 107, s__Phascolarctobacterium_faecium
+2026-06-02 12:11:49.958662 INFO::Fitting model to feature number 108, s__Dialister_invisus
+2026-06-02 12:11:49.988197 INFO::Fitting model to feature number 109, s__Veillonella_atypica
+2026-06-02 12:11:50.01308 INFO::Fitting model to feature number 110, s__Veillonella_dispar
+2026-06-02 12:11:50.040496 INFO::Fitting model to feature number 111, s__Veillonella_infantium
+2026-06-02 12:11:50.065249 INFO::Fitting model to feature number 112, s__Veillonella_parvula
+2026-06-02 12:11:50.089358 INFO::Fitting model to feature number 113, s__Veillonella_sp_T11011_6
+2026-06-02 12:11:50.121621 INFO::Fitting model to feature number 114, s__Parasutterella_excrementihominis
+2026-06-02 12:11:50.146168 INFO::Fitting model to feature number 115, s__Sutterella_parvirubra
+2026-06-02 12:11:50.171621 INFO::Fitting model to feature number 116, s__Turicimonas_muris
+2026-06-02 12:11:50.195972 INFO::Fitting model to feature number 117, s__Bilophila_wadsworthia
+2026-06-02 12:11:50.22199 INFO::Fitting model to feature number 118, s__Escherichia_coli
+2026-06-02 12:11:50.246029 INFO::Fitting model to feature number 119, s__Haemophilus_parainfluenzae
+2026-06-02 12:11:50.280147 INFO::Fitting model to feature number 120, s__Haemophilus_sp_HMSC71H05
+2026-06-02 12:11:50.305631 INFO::Fitting model to feature number 121, s__Proteobacteria_bacterium_CAG_139
+2026-06-02 12:11:50.335957 INFO::Fitting model to feature number 122, s__Akkermansia_muciniphila
+2026-06-02 12:11:50.370931 INFO::Counting total values for each feature
+2026-06-02 12:11:50.378545 INFO::Writing filtered data to file results/maaslin2/microbiome/features/filtered_data.tsv
+2026-06-02 12:11:50.428975 INFO::Writing filtered, normalized data to file results/maaslin2/microbiome/features/filtered_data_norm.tsv
+2026-06-02 12:11:50.484198 INFO::Writing filtered, normalized, transformed data to file results/maaslin2/microbiome/features/filtered_data_norm_transformed.tsv
+2026-06-02 12:11:50.5223 INFO::Writing residuals to file results/maaslin2/microbiome/fits/residuals.rds
+2026-06-02 12:11:50.541842 INFO::Writing fitted values to file results/maaslin2/microbiome/fits/fitted.rds
+2026-06-02 12:11:50.557859 INFO::Writing extracted random effects to file results/maaslin2/microbiome/fits/ranef.rds
+2026-06-02 12:11:50.568198 INFO::Writing all results to file (ordered by increasing q-values): results/maaslin2/microbiome/all_results.tsv
+2026-06-02 12:11:50.574436 INFO::Writing the significant results (those which are less than or equal to the threshold of 0.250000 ) to file (ordered by increasing q-values): results/maaslin2/microbiome/significant_results.tsv
+2026-06-02 12:11:50.579904 INFO::Writing heatmap of significant results to file: results/maaslin2/microbiome/heatmap.pdf
+2026-06-02 12:11:50.767122 INFO::Writing association plots (one for each significant association) to output folder: results/maaslin2/microbiome
+2026-06-02 12:11:50.788073 INFO::Plotting associations from most to least significant, grouped by metadata
+2026-06-02 12:11:50.79055 INFO::Plotting data for metadata number 1, diagnosis
+2026-06-02 12:11:50.797599 INFO::Creating boxplot for categorical data, diagnosis vs s__Eggerthella_lenta
+2026-06-02 12:11:51.043689 INFO::Creating boxplot for categorical data, diagnosis vs s__Alistipes_putredinis
+2026-06-02 12:11:51.17567 INFO::Creating boxplot for categorical data, diagnosis vs s__Clostridium_bolteae_CAG_59
+2026-06-02 12:11:51.321532 INFO::Creating boxplot for categorical data, diagnosis vs s__Clostridium_sp_CAG_242
+2026-06-02 12:11:51.44995 INFO::Creating boxplot for categorical data, diagnosis vs s__Ruminococcus_torques
+2026-06-02 12:11:51.57653 INFO::Creating boxplot for categorical data, diagnosis vs s__Roseburia_inulinivorans
+2026-06-02 12:11:51.713092 INFO::Creating boxplot for categorical data, diagnosis vs s__Anaeromassilibacillus_sp_An250
+2026-06-02 12:11:51.847121 INFO::Creating boxplot for categorical data, diagnosis vs s__Flavonifractor_plautii
+2026-06-02 12:11:51.976406 INFO::Creating boxplot for categorical data, diagnosis vs s__Flavonifractor_plautii
+2026-06-02 12:11:52.10252 INFO::Creating boxplot for categorical data, diagnosis vs s__Dielma_fastidiosa
+2026-06-02 12:11:52.232544 INFO::Creating boxplot for categorical data, diagnosis vs s__Dielma_fastidiosa
+2026-06-02 12:11:52.365501 INFO::Creating boxplot for categorical data, diagnosis vs s__Haemophilus_sp_HMSC71H05
+2026-06-02 12:11:52.491743 INFO::Creating boxplot for categorical data, diagnosis vs s__Akkermansia_muciniphila
+2026-06-02 12:11:52.614725 INFO::Creating boxplot for categorical data, diagnosis vs s__Collinsella_stercoris
+2026-06-02 12:11:52.749868 INFO::Creating boxplot for categorical data, diagnosis vs s__Odoribacter_splanchnicus
+2026-06-02 12:11:52.875787 INFO::Creating boxplot for categorical data, diagnosis vs s__Ruminococcus_bicirculans
+2026-06-02 12:11:53.002443 INFO::Creating boxplot for categorical data, diagnosis vs s__Proteobacteria_bacterium_CAG_139
+2026-06-02 12:11:53.138969 INFO::Creating boxplot for categorical data, diagnosis vs s__Alistipes_shahii
+2026-06-02 12:11:53.262248 INFO::Creating boxplot for categorical data, diagnosis vs s__Ruminococcus_torques
+2026-06-02 12:11:53.419598 INFO::Creating boxplot for categorical data, diagnosis vs s__Clostridium_saccharolyticum
+2026-06-02 12:11:53.554808 INFO::Creating boxplot for categorical data, diagnosis vs s__Firmicutes_bacterium_CAG_83
+2026-06-02 12:11:53.684664 INFO::Creating boxplot for categorical data, diagnosis vs s__Gemmiger_formicilis
+2026-06-02 12:11:53.816737 INFO::Creating boxplot for categorical data, diagnosis vs s__Bifidobacterium_adolescentis
+Warning message:
+The `size` argument of `element_line()` is deprecated as of ggplot2 3.4.0.
+ℹ Please use the `linewidth` argument instead.
+ℹ The deprecated feature was likely used in the Maaslin2 package.
+  Please report the issue at <https://github.com/biobakery/maaslin2/issues>. 
+
+Microbiome MaAsLin2 complete!
+
+=== Step 4b: Running MaAsLin2 on metabolomics ===
+Testing 500 metabolites against IBD diagnosis...
+This should take 3-8 minutes
+
+[1] "Creating output feature tables folder"
+[1] "Creating output fits folder"
+[1] "Creating output figures folder"
+2026-06-02 12:11:55.246533 INFO::Writing function arguments to log file
+2026-06-02 12:11:55.333362 INFO::Verifying options selected are valid
+2026-06-02 12:11:55.338171 INFO::Determining format of input files
+2026-06-02 12:11:55.342849 INFO::Input format is data samples as rows and metadata samples as rows
+2026-06-02 12:11:55.368599 INFO::Formula for random effects: expr ~ (1 | participant_id)
+2026-06-02 12:11:55.380455 INFO::Formula for fixed effects: expr ~  diagnosis
+2026-06-02 12:11:55.392166 INFO::Filter data based on min abundance and min prevalence
+2026-06-02 12:11:55.397908 INFO::Total samples in data: 388
+2026-06-02 12:11:55.416955 INFO::Min samples required with min abundance for a feature not to be filtered: 0.000000
+2026-06-02 12:11:55.425604 INFO::Total filtered features: 0
+2026-06-02 12:11:55.436472 INFO::Filtered feature names from abundance and prevalence filtering:
+2026-06-02 12:11:55.450672 INFO::Total filtered features with variance filtering: 0
+2026-06-02 12:11:55.456161 INFO::Filtered feature names from variance filtering:
+2026-06-02 12:11:55.462033 INFO::Running selected normalization method: NONE
+2026-06-02 12:11:55.468771 INFO::Applying z-score to standardize continuous metadata
+2026-06-02 12:11:55.475029 INFO::Running selected transform method: NONE
+2026-06-02 12:11:55.49248 INFO::Running selected analysis method: LM
+2026-06-02 12:11:55.495201 INFO::Fitting model to feature number 1, HILp_TF20
+2026-06-02 12:11:55.538531 INFO::Fitting model to feature number 2, HILp_TF39
+2026-06-02 12:11:55.563518 INFO::Fitting model to feature number 3, HILp_TF16
+2026-06-02 12:11:55.588764 INFO::Fitting model to feature number 4, HILp_TF52
+2026-06-02 12:11:55.619301 INFO::Fitting model to feature number 5, HILp_TF33
+2026-06-02 12:11:55.654257 INFO::Fitting model to feature number 6, HILp_QI8712
+2026-06-02 12:11:55.679814 INFO::Fitting model to feature number 7, HILp_TF24
+2026-06-02 12:11:55.706452 INFO::Fitting model to feature number 8, C8p_QI26482
+2026-06-02 12:11:55.73225 INFO::Fitting model to feature number 9, C18n_QI13811
+2026-06-02 12:11:55.757106 INFO::Fitting model to feature number 10, HILp_TF21
+2026-06-02 12:11:55.800113 INFO::Fitting model to feature number 11, HILn_QI2616
+2026-06-02 12:11:55.828125 INFO::Fitting model to feature number 12, HILn_QI2647
+2026-06-02 12:11:55.859008 INFO::Fitting model to feature number 13, HILn_QI1119
+2026-06-02 12:11:55.885164 INFO::Fitting model to feature number 14, HILn_TF19
+2026-06-02 12:11:55.920881 INFO::Fitting model to feature number 15, HILp_QI20978
+2026-06-02 12:11:55.946256 INFO::Fitting model to feature number 16, C8p_QI26128
+2026-06-02 12:11:55.97233 INFO::Fitting model to feature number 17, HILp_TF5
+2026-06-02 12:11:55.996105 INFO::Fitting model to feature number 18, HILp_TF23
+2026-06-02 12:11:56.030442 INFO::Fitting model to feature number 19, HILn_QI2903
+2026-06-02 12:11:56.059321 INFO::Fitting model to feature number 20, HILp_TF49
+2026-06-02 12:11:56.084093 INFO::Fitting model to feature number 21, HILp_QI8713
+2026-06-02 12:11:56.10836 INFO::Fitting model to feature number 22, HILn_QI12440
+2026-06-02 12:11:56.131968 INFO::Fitting model to feature number 23, HILn_QI1296
+2026-06-02 12:11:56.16981 INFO::Fitting model to feature number 24, C18n_QI13742
+2026-06-02 12:11:56.194183 INFO::Fitting model to feature number 25, C8p_QI26573
+2026-06-02 12:11:56.219214 INFO::Fitting model to feature number 26, HILn_QI2248
+2026-06-02 12:11:56.24339 INFO::Fitting model to feature number 27, C18n_QI13749
+2026-06-02 12:11:56.289994 INFO::Fitting model to feature number 28, HILp_QI20578
+2026-06-02 12:11:56.321704 INFO::Fitting model to feature number 29, HILp_QI24865
+2026-06-02 12:11:56.347274 INFO::Fitting model to feature number 30, HILp_QI19705
+2026-06-02 12:11:56.375428 INFO::Fitting model to feature number 31, HILn_QI2732
+2026-06-02 12:11:56.408588 INFO::Fitting model to feature number 32, HILn_QI2717
+2026-06-02 12:11:56.448262 INFO::Fitting model to feature number 33, C8p_QI25594
+2026-06-02 12:11:56.476996 INFO::Fitting model to feature number 34, HILn_QI1484
+2026-06-02 12:11:56.505692 INFO::Fitting model to feature number 35, HILn_QI3368
+2026-06-02 12:11:56.538662 INFO::Fitting model to feature number 36, HILp_QI1201
+2026-06-02 12:11:56.565493 INFO::Fitting model to feature number 37, HILp_QI22820
+2026-06-02 12:11:56.609691 INFO::Fitting model to feature number 38, C18n_QI13828
+2026-06-02 12:11:56.636616 INFO::Fitting model to feature number 39, C18n_QI13910
+2026-06-02 12:11:56.662395 INFO::Fitting model to feature number 40, HILn_TF14
+2026-06-02 12:11:56.689676 INFO::Fitting model to feature number 41, HILp_QI8656
+2026-06-02 12:11:56.715722 INFO::Fitting model to feature number 42, HILp_QI14161
+2026-06-02 12:11:56.756875 INFO::Fitting model to feature number 43, C18n_QI13732
+2026-06-02 12:11:56.783192 INFO::Fitting model to feature number 44, HILn_QI3392
+2026-06-02 12:11:56.808553 INFO::Fitting model to feature number 45, HILn_QI2754
+2026-06-02 12:11:56.833888 INFO::Fitting model to feature number 46, HILp_QI22009
+2026-06-02 12:11:56.858687 INFO::Fitting model to feature number 47, HILp_QI20426
+2026-06-02 12:11:56.899039 INFO::Fitting model to feature number 48, C18n_QI13755
+2026-06-02 12:11:56.925521 INFO::Fitting model to feature number 49, C8p_QI25102
+2026-06-02 12:11:56.952021 INFO::Fitting model to feature number 50, HILn_QI2809
+2026-06-02 12:11:56.977443 INFO::Fitting model to feature number 51, HILp_QI6290
+2026-06-02 12:11:57.002804 INFO::Fitting model to feature number 52, HILn_QI999
+2026-06-02 12:11:57.042915 INFO::Fitting model to feature number 53, C8p_QI26870
+2026-06-02 12:11:57.072198 INFO::Fitting model to feature number 54, HILn_QI2677
+2026-06-02 12:11:57.103567 INFO::Fitting model to feature number 55, HILn_QI1135
+2026-06-02 12:11:57.134642 INFO::Fitting model to feature number 56, HILp_QI18006
+2026-06-02 12:11:57.158774 INFO::Fitting model to feature number 57, C18n_QI13830
+2026-06-02 12:11:57.198795 INFO::Fitting model to feature number 58, HILp_QI18406
+2026-06-02 12:11:57.226648 INFO::Fitting model to feature number 59, C18n_QI13897
+2026-06-02 12:11:57.252514 INFO::Fitting model to feature number 60, HILp_QI15737
+2026-06-02 12:11:57.278415 INFO::Fitting model to feature number 61, HILp_QI22689
+2026-06-02 12:11:57.314614 INFO::Fitting model to feature number 62, HILp_QI22738
+2026-06-02 12:11:57.352916 INFO::Fitting model to feature number 63, C8p_QI8858
+2026-06-02 12:11:57.379848 INFO::Fitting model to feature number 64, C18n_TF1
+2026-06-02 12:11:57.406742 INFO::Fitting model to feature number 65, C18n_QI12685
+2026-06-02 12:11:57.432688 INFO::Fitting model to feature number 66, HILp_QI19289
+2026-06-02 12:11:57.472286 INFO::Fitting model to feature number 67, C18n_QI13911
+2026-06-02 12:11:57.503674 INFO::Fitting model to feature number 68, C8p_QI28908
+2026-06-02 12:11:57.530109 INFO::Fitting model to feature number 69, C8p_QI8747
+2026-06-02 12:11:57.563577 INFO::Fitting model to feature number 70, HILp_QI17886
+2026-06-02 12:11:57.588553 INFO::Fitting model to feature number 71, HILp_QI19735
+2026-06-02 12:11:57.628743 INFO::Fitting model to feature number 72, HILn_QI2423
+2026-06-02 12:11:57.659841 INFO::Fitting model to feature number 73, HILp_QI8849
+2026-06-02 12:11:57.687505 INFO::Fitting model to feature number 74, HILp_TF26
+2026-06-02 12:11:57.712648 INFO::Fitting model to feature number 75, HILn_TF8
+2026-06-02 12:11:57.740186 INFO::Fitting model to feature number 76, C18n_QI13694
+2026-06-02 12:11:57.778076 INFO::Fitting model to feature number 77, HILp_QI9439
+2026-06-02 12:11:57.817537 INFO::Fitting model to feature number 78, HILp_QI21205
+2026-06-02 12:11:57.848642 INFO::Fitting model to feature number 79, HILp_QI23693
+2026-06-02 12:11:57.87423 INFO::Fitting model to feature number 80, HILp_QI21874
+2026-06-02 12:11:57.898977 INFO::Fitting model to feature number 81, C18n_QI728
+2026-06-02 12:11:57.941697 INFO::Fitting model to feature number 82, C18n_QI201
+2026-06-02 12:11:57.967416 INFO::Fitting model to feature number 83, HILn_QI1058
+2026-06-02 12:11:57.995538 INFO::Fitting model to feature number 84, C18n_QI13355
+2026-06-02 12:11:58.023745 INFO::Fitting model to feature number 85, HILp_QI21861
+2026-06-02 12:11:58.049256 INFO::Fitting model to feature number 86, HILp_QI22456
+2026-06-02 12:11:58.08936 INFO::Fitting model to feature number 87, C18n_QI8685
+2026-06-02 12:11:58.116037 INFO::Fitting model to feature number 88, C18n_QI13334
+2026-06-02 12:11:58.14299 INFO::Fitting model to feature number 89, HILp_QI22784
+2026-06-02 12:11:58.173876 INFO::Fitting model to feature number 90, HILp_QI22179
+2026-06-02 12:11:58.2034 INFO::Fitting model to feature number 91, HILp_QI18210
+2026-06-02 12:11:58.243806 INFO::Fitting model to feature number 92, C18n_QI13819
+2026-06-02 12:11:58.27114 INFO::Fitting model to feature number 93, C18n_QI5195
+2026-06-02 12:11:58.296995 INFO::Fitting model to feature number 94, HILp_QI19375
+2026-06-02 12:11:58.327817 INFO::Fitting model to feature number 95, HILp_QI25015
+2026-06-02 12:11:58.364096 INFO::Fitting model to feature number 96, C18n_QI13912
+2026-06-02 12:11:58.396041 INFO::Fitting model to feature number 97, C8p_QI28924
+2026-06-02 12:11:58.424507 INFO::Fitting model to feature number 98, HILp_QI20639
+2026-06-02 12:11:58.449943 INFO::Fitting model to feature number 99, C18n_QI13324
+2026-06-02 12:11:58.475662 INFO::Fitting model to feature number 100, C18n_QI13335
+2026-06-02 12:11:58.517447 INFO::Fitting model to feature number 101, HILp_QI11297
+2026-06-02 12:11:58.546871 INFO::Fitting model to feature number 102, HILn_QI1103
+2026-06-02 12:11:58.577085 INFO::Fitting model to feature number 103, HILn_QI2407
+2026-06-02 12:11:58.603953 INFO::Fitting model to feature number 104, HILn_QI1931
+2026-06-02 12:11:58.630233 INFO::Fitting model to feature number 105, HILp_QI25157
+2026-06-02 12:11:58.670761 INFO::Fitting model to feature number 106, HILp_QI19385
+2026-06-02 12:11:58.699079 INFO::Fitting model to feature number 107, C18n_QI3961
+2026-06-02 12:11:58.746075 INFO::Fitting model to feature number 108, C18n_QI6244
+2026-06-02 12:11:58.773741 INFO::Fitting model to feature number 109, HILp_QI25047
+2026-06-02 12:11:58.80011 INFO::Fitting model to feature number 110, HILp_QI24700
+2026-06-02 12:11:58.841524 INFO::Fitting model to feature number 111, HILp_QI19733
+2026-06-02 12:11:58.869004 INFO::Fitting model to feature number 112, HILn_QI803
+2026-06-02 12:11:58.893994 INFO::Fitting model to feature number 113, HILn_QI1018
+2026-06-02 12:11:58.918627 INFO::Fitting model to feature number 114, HILp_QI6871
+2026-06-02 12:11:58.94379 INFO::Fitting model to feature number 115, C18n_QI6486
+2026-06-02 12:11:58.989001 INFO::Fitting model to feature number 116, HILp_QI20437
+2026-06-02 12:11:59.015576 INFO::Fitting model to feature number 117, HILp_QI22234
+2026-06-02 12:11:59.041537 INFO::Fitting model to feature number 118, C18n_QI13715
+2026-06-02 12:11:59.067034 INFO::Fitting model to feature number 119, HILp_QI20661
+2026-06-02 12:11:59.091317 INFO::Fitting model to feature number 120, C18n_QI8425
+2026-06-02 12:11:59.13309 INFO::Fitting model to feature number 121, HILp_QI22783
+2026-06-02 12:11:59.159997 INFO::Fitting model to feature number 122, C8p_QI8940
+2026-06-02 12:11:59.188644 INFO::Fitting model to feature number 123, HILn_TF2
+2026-06-02 12:11:59.213689 INFO::Fitting model to feature number 124, HILp_QI19707
+2026-06-02 12:11:59.249414 INFO::Fitting model to feature number 125, C8p_QI28879
+2026-06-02 12:11:59.279312 INFO::Fitting model to feature number 126, C18n_QI7821
+2026-06-02 12:11:59.308576 INFO::Fitting model to feature number 127, HILp_QI13201
+2026-06-02 12:11:59.334767 INFO::Fitting model to feature number 128, HILp_QI20614
+2026-06-02 12:11:59.360445 INFO::Fitting model to feature number 129, HILp_QI25066
+2026-06-02 12:11:59.406066 INFO::Fitting model to feature number 130, HILp_QI22835
+2026-06-02 12:11:59.434062 INFO::Fitting model to feature number 131, HILp_QI14988
+2026-06-02 12:11:59.459949 INFO::Fitting model to feature number 132, HILp_QI3084
+2026-06-02 12:11:59.484844 INFO::Fitting model to feature number 133, HILn_QI21
+2026-06-02 12:11:59.510965 INFO::Fitting model to feature number 134, HILn_QI1184
+2026-06-02 12:11:59.550812 INFO::Fitting model to feature number 135, C18n_QI4015
+2026-06-02 12:11:59.57803 INFO::Fitting model to feature number 136, HILp_QI18095
+2026-06-02 12:11:59.605344 INFO::Fitting model to feature number 137, HILp_QI25304
+2026-06-02 12:11:59.630786 INFO::Fitting model to feature number 138, HILp_QI10676
+2026-06-02 12:11:59.655427 INFO::Fitting model to feature number 139, C18n_QI13367
+2026-06-02 12:11:59.694442 INFO::Fitting model to feature number 140, C18n_QI8349
+2026-06-02 12:11:59.720438 INFO::Fitting model to feature number 141, HILn_QI28561
+2026-06-02 12:11:59.747256 INFO::Fitting model to feature number 142, HILn_QI2691
+2026-06-02 12:11:59.773156 INFO::Fitting model to feature number 143, HILn_QI1864
+2026-06-02 12:11:59.796947 INFO::Fitting model to feature number 144, C8p_QI20628
+2026-06-02 12:11:59.838755 INFO::Fitting model to feature number 145, HILp_QI22152
+2026-06-02 12:11:59.864764 INFO::Fitting model to feature number 146, HILp_QI21470
+2026-06-02 12:11:59.890012 INFO::Fitting model to feature number 147, HILn_QI1554
+2026-06-02 12:11:59.923035 INFO::Fitting model to feature number 148, C18n_QI9051
+2026-06-02 12:11:59.947518 INFO::Fitting model to feature number 149, HILn_QI1847
+2026-06-02 12:11:59.98794 INFO::Fitting model to feature number 150, HILp_QI10719
+2026-06-02 12:12:00.013996 INFO::Fitting model to feature number 151, HILn_QI1447
+2026-06-02 12:12:00.051863 INFO::Fitting model to feature number 152, C8p_QI1909
+2026-06-02 12:12:00.076544 INFO::Fitting model to feature number 153, C18n_QI13745
+2026-06-02 12:12:00.102115 INFO::Fitting model to feature number 154, HILp_QI13141
+2026-06-02 12:12:00.142077 INFO::Fitting model to feature number 155, C8p_QI11993
+2026-06-02 12:12:00.167374 INFO::Fitting model to feature number 156, HILp_QI15496
+2026-06-02 12:12:00.192866 INFO::Fitting model to feature number 157, HILp_QI21617
+2026-06-02 12:12:00.218566 INFO::Fitting model to feature number 158, HILp_QI25203
+2026-06-02 12:12:00.253191 INFO::Fitting model to feature number 159, HILp_QI24957
+2026-06-02 12:12:00.283601 INFO::Fitting model to feature number 160, HILp_QI21690
+2026-06-02 12:12:00.308894 INFO::Fitting model to feature number 161, HILn_QI1414
+2026-06-02 12:12:00.335575 INFO::Fitting model to feature number 162, HILp_TF34
+2026-06-02 12:12:00.36047 INFO::Fitting model to feature number 163, HILp_QI14726
+2026-06-02 12:12:00.395302 INFO::Fitting model to feature number 164, HILn_QI1415
+2026-06-02 12:12:00.429422 INFO::Fitting model to feature number 165, HILp_QI21566
+2026-06-02 12:12:00.45755 INFO::Fitting model to feature number 166, HILn_QI2569
+2026-06-02 12:12:00.482873 INFO::Fitting model to feature number 167, HILp_QI13140
+2026-06-02 12:12:00.508501 INFO::Fitting model to feature number 168, C18n_QI12760
+2026-06-02 12:12:00.545283 INFO::Fitting model to feature number 169, HILp_QI14551
+2026-06-02 12:12:00.574137 INFO::Fitting model to feature number 170, HILp_QI11502
+2026-06-02 12:12:00.600947 INFO::Fitting model to feature number 171, HILp_QI10806
+2026-06-02 12:12:00.627249 INFO::Fitting model to feature number 172, HILp_QI17682
+2026-06-02 12:12:00.651294 INFO::Fitting model to feature number 173, HILn_QI1532
+2026-06-02 12:12:00.689297 INFO::Fitting model to feature number 174, HILn_QI17883
+2026-06-02 12:12:00.716227 INFO::Fitting model to feature number 175, HILp_QI9441
+2026-06-02 12:12:00.741262 INFO::Fitting model to feature number 176, HILp_QI24903
+2026-06-02 12:12:00.767125 INFO::Fitting model to feature number 177, HILp_QI17131
+2026-06-02 12:12:00.795321 INFO::Fitting model to feature number 178, C8p_QI25334
+2026-06-02 12:12:00.837101 INFO::Fitting model to feature number 179, HILp_QI3864
+2026-06-02 12:12:00.863468 INFO::Fitting model to feature number 180, HILp_QI21318
+2026-06-02 12:12:00.889357 INFO::Fitting model to feature number 181, HILp_QI20501
+2026-06-02 12:12:00.914193 INFO::Fitting model to feature number 182, HILp_QI12250
+2026-06-02 12:12:00.939575 INFO::Fitting model to feature number 183, C18n_QI6993
+2026-06-02 12:12:00.980569 INFO::Fitting model to feature number 184, C18n_QI11503
+2026-06-02 12:12:01.009815 INFO::Fitting model to feature number 185, HILp_QI21620
+2026-06-02 12:12:01.035448 INFO::Fitting model to feature number 186, C18n_QI5741
+2026-06-02 12:12:01.061194 INFO::Fitting model to feature number 187, HILp_QI18613
+2026-06-02 12:12:01.090672 INFO::Fitting model to feature number 188, C8p_QI25709
+2026-06-02 12:12:01.130269 INFO::Fitting model to feature number 189, HILn_QI24618
+2026-06-02 12:12:01.156743 INFO::Fitting model to feature number 190, C8p_QI22888
+2026-06-02 12:12:01.181951 INFO::Fitting model to feature number 191, C8p_QI27060
+2026-06-02 12:12:01.222427 INFO::Fitting model to feature number 192, C8p_QI5680
+2026-06-02 12:12:01.25747 INFO::Fitting model to feature number 193, HILp_QI25167
+2026-06-02 12:12:01.286651 INFO::Fitting model to feature number 194, HILp_QI25051
+2026-06-02 12:12:01.312032 INFO::Fitting model to feature number 195, HILp_QI22455
+2026-06-02 12:12:01.340029 INFO::Fitting model to feature number 196, C8p_QI2112
+2026-06-02 12:12:01.365306 INFO::Fitting model to feature number 197, HILp_QI189
+2026-06-02 12:12:01.403086 INFO::Fitting model to feature number 198, HILp_QI9838
+2026-06-02 12:12:01.431003 INFO::Fitting model to feature number 199, HILp_QI13199
+2026-06-02 12:12:01.45838 INFO::Fitting model to feature number 200, C8p_QI21184
+2026-06-02 12:12:01.483453 INFO::Fitting model to feature number 201, HILp_QI14410
+2026-06-02 12:12:01.508221 INFO::Fitting model to feature number 202, HILp_QI19473
+2026-06-02 12:12:01.546673 INFO::Fitting model to feature number 203, C18n_QI4496
+2026-06-02 12:12:01.57461 INFO::Fitting model to feature number 204, C8p_QI7039
+2026-06-02 12:12:01.600978 INFO::Fitting model to feature number 205, HILp_QI13142
+2026-06-02 12:12:01.62763 INFO::Fitting model to feature number 206, HILp_QI8262
+2026-06-02 12:12:01.652913 INFO::Fitting model to feature number 207, HILp_QI735
+2026-06-02 12:12:01.693149 INFO::Fitting model to feature number 208, HILp_QI22739
+2026-06-02 12:12:01.719992 INFO::Fitting model to feature number 209, C8p_QI26211
+2026-06-02 12:12:01.745712 INFO::Fitting model to feature number 210, C18n_QI13354
+2026-06-02 12:12:01.775783 INFO::Fitting model to feature number 211, C18n_QI7890
+2026-06-02 12:12:01.801593 INFO::Fitting model to feature number 212, C18n_QI3804
+2026-06-02 12:12:01.842488 INFO::Fitting model to feature number 213, C8p_QI28687
+2026-06-02 12:12:01.869138 INFO::Fitting model to feature number 214, HILp_QI21407
+2026-06-02 12:12:01.89537 INFO::Fitting model to feature number 215, C18n_QI9052
+2026-06-02 12:12:01.926452 INFO::Fitting model to feature number 216, HILn_QI4140
+2026-06-02 12:12:01.960918 INFO::Fitting model to feature number 217, C18n_QI10508
+2026-06-02 12:12:01.998755 INFO::Fitting model to feature number 218, C18n_QI3676
+2026-06-02 12:12:02.028895 INFO::Fitting model to feature number 219, HILp_QI16421
+2026-06-02 12:12:02.055845 INFO::Fitting model to feature number 220, HILp_QI24483
+2026-06-02 12:12:02.081298 INFO::Fitting model to feature number 221, HILp_QI21301
+2026-06-02 12:12:02.120305 INFO::Fitting model to feature number 222, HILp_QI24860
+2026-06-02 12:12:02.148265 INFO::Fitting model to feature number 223, HILp_QI14049
+2026-06-02 12:12:02.173909 INFO::Fitting model to feature number 224, HILp_QI13528
+2026-06-02 12:12:02.199979 INFO::Fitting model to feature number 225, HILp_QI11843
+2026-06-02 12:12:02.225295 INFO::Fitting model to feature number 226, HILp_QI25201
+2026-06-02 12:12:02.262995 INFO::Fitting model to feature number 227, HILp_QI20421
+2026-06-02 12:12:02.290317 INFO::Fitting model to feature number 228, HILp_QI7610
+2026-06-02 12:12:02.316853 INFO::Fitting model to feature number 229, C8p_QI26993
+2026-06-02 12:12:02.342747 INFO::Fitting model to feature number 230, C18n_QI11529
+2026-06-02 12:12:02.369752 INFO::Fitting model to feature number 231, C18n_QI10462
+2026-06-02 12:12:02.413155 INFO::Fitting model to feature number 232, HILp_QI9474
+2026-06-02 12:12:02.441248 INFO::Fitting model to feature number 233, HILn_QI1107
+2026-06-02 12:12:02.467349 INFO::Fitting model to feature number 234, C18n_QI7175
+2026-06-02 12:12:02.492553 INFO::Fitting model to feature number 235, HILp_QI23683
+2026-06-02 12:12:02.517179 INFO::Fitting model to feature number 236, HILn_QI4086
+2026-06-02 12:12:02.558442 INFO::Fitting model to feature number 237, C8p_QI24569
+2026-06-02 12:12:02.584517 INFO::Fitting model to feature number 238, HILp_QI20255
+2026-06-02 12:12:02.609831 INFO::Fitting model to feature number 239, HILp_QI13503
+2026-06-02 12:12:02.635704 INFO::Fitting model to feature number 240, C18n_QI8539
+2026-06-02 12:12:02.660945 INFO::Fitting model to feature number 241, HILp_QI13680
+2026-06-02 12:12:02.70425 INFO::Fitting model to feature number 242, HILp_QI10795
+2026-06-02 12:12:02.729791 INFO::Fitting model to feature number 243, HILp_QI13103
+2026-06-02 12:12:02.756926 INFO::Fitting model to feature number 244, HILp_QI22834
+2026-06-02 12:12:02.788214 INFO::Fitting model to feature number 245, HILp_QI24513
+2026-06-02 12:12:02.81288 INFO::Fitting model to feature number 246, C8p_QI16401
+2026-06-02 12:12:02.856304 INFO::Fitting model to feature number 247, C8p_QI25850
+2026-06-02 12:12:02.882884 INFO::Fitting model to feature number 248, C18n_QI6566
+2026-06-02 12:12:02.909504 INFO::Fitting model to feature number 249, HILp_QI16668
+2026-06-02 12:12:02.934708 INFO::Fitting model to feature number 250, HILp_TF4
+2026-06-02 12:12:02.970571 INFO::Fitting model to feature number 251, HILp_QI16949
+2026-06-02 12:12:03.000981 INFO::Fitting model to feature number 252, C8p_QI24127
+2026-06-02 12:12:03.026516 INFO::Fitting model to feature number 253, C18n_QI8686
+2026-06-02 12:12:03.054162 INFO::Fitting model to feature number 254, C18n_QI4492
+2026-06-02 12:12:03.079332 INFO::Fitting model to feature number 255, HILp_QI22740
+2026-06-02 12:12:03.121096 INFO::Fitting model to feature number 256, HILp_QI22384
+2026-06-02 12:12:03.149898 INFO::Fitting model to feature number 257, HILp_QI22465
+2026-06-02 12:12:03.175903 INFO::Fitting model to feature number 258, HILp_QI17412
+2026-06-02 12:12:03.206333 INFO::Fitting model to feature number 259, C8p_QI26495
+2026-06-02 12:12:03.231436 INFO::Fitting model to feature number 260, HILp_TF37
+2026-06-02 12:12:03.269776 INFO::Fitting model to feature number 261, HILp_QI19125
+2026-06-02 12:12:03.298208 INFO::Fitting model to feature number 262, HILn_QI7647
+2026-06-02 12:12:03.325241 INFO::Fitting model to feature number 263, C8p_QI18814
+2026-06-02 12:12:03.350511 INFO::Fitting model to feature number 264, C8p_QI21828
+2026-06-02 12:12:03.376758 INFO::Fitting model to feature number 265, HILn_QI2110
+2026-06-02 12:12:03.41684 INFO::Fitting model to feature number 266, C18n_QI13886
+2026-06-02 12:12:03.443439 INFO::Fitting model to feature number 267, C18n_QI13879
+2026-06-02 12:12:03.468653 INFO::Fitting model to feature number 268, HILp_QI25298
+2026-06-02 12:12:03.494094 INFO::Fitting model to feature number 269, C8p_QI11976
+2026-06-02 12:12:03.518722 INFO::Fitting model to feature number 270, C18n_QI6982
+2026-06-02 12:12:03.55784 INFO::Fitting model to feature number 271, HILn_QI1220
+2026-06-02 12:12:03.58366 INFO::Fitting model to feature number 272, HILn_QI15054
+2026-06-02 12:12:03.608709 INFO::Fitting model to feature number 273, HILp_QI17063
+2026-06-02 12:12:03.634549 INFO::Fitting model to feature number 274, C18n_QI1744
+2026-06-02 12:12:03.659585 INFO::Fitting model to feature number 275, C18n_QI10062
+2026-06-02 12:12:03.700555 INFO::Fitting model to feature number 276, HILp_QI13839
+2026-06-02 12:12:03.726975 INFO::Fitting model to feature number 277, HILp_QI9316
+2026-06-02 12:12:03.752077 INFO::Fitting model to feature number 278, HILp_QI11151
+2026-06-02 12:12:03.777763 INFO::Fitting model to feature number 279, C8p_QI17020
+2026-06-02 12:12:03.808682 INFO::Fitting model to feature number 280, C18n_QI11997
+2026-06-02 12:12:03.850393 INFO::Fitting model to feature number 281, C18n_QI13846
+2026-06-02 12:12:03.877168 INFO::Fitting model to feature number 282, HILp_QI12078
+2026-06-02 12:12:03.904176 INFO::Fitting model to feature number 283, HILp_QI22779
+2026-06-02 12:12:03.929536 INFO::Fitting model to feature number 284, HILp_QI24045
+2026-06-02 12:12:03.968906 INFO::Fitting model to feature number 285, HILp_QI11487
+2026-06-02 12:12:03.999133 INFO::Fitting model to feature number 286, HILn_QI3923
+2026-06-02 12:12:04.029462 INFO::Fitting model to feature number 287, HILp_QI13845
+2026-06-02 12:12:04.058909 INFO::Fitting model to feature number 288, HILn_QI1632
+2026-06-02 12:12:04.084785 INFO::Fitting model to feature number 289, HILp_QI22414
+2026-06-02 12:12:04.122389 INFO::Fitting model to feature number 290, HILp_QI9491
+2026-06-02 12:12:04.151427 INFO::Fitting model to feature number 291, HILp_QI22559
+2026-06-02 12:12:04.177614 INFO::Fitting model to feature number 292, C18n_QI13683
+2026-06-02 12:12:04.205029 INFO::Fitting model to feature number 293, HILp_QI17840
+2026-06-02 12:12:04.23157 INFO::Fitting model to feature number 294, HILp_QI22833
+2026-06-02 12:12:04.271092 INFO::Fitting model to feature number 295, HILp_QI21468
+2026-06-02 12:12:04.298583 INFO::Fitting model to feature number 296, HILn_QI1278
+2026-06-02 12:12:04.325417 INFO::Fitting model to feature number 297, HILp_QI13774
+2026-06-02 12:12:04.350637 INFO::Fitting model to feature number 298, C18n_QI13404
+2026-06-02 12:12:04.375375 INFO::Fitting model to feature number 299, HILp_QI25040
+2026-06-02 12:12:04.415755 INFO::Fitting model to feature number 300, HILp_QI22688
+2026-06-02 12:12:04.44208 INFO::Fitting model to feature number 301, HILp_QI10345
+2026-06-02 12:12:04.467312 INFO::Fitting model to feature number 302, HILp_QI23754
+2026-06-02 12:12:04.492222 INFO::Fitting model to feature number 303, C8p_QI16430
+2026-06-02 12:12:04.516325 INFO::Fitting model to feature number 304, HILp_QI15503
+2026-06-02 12:12:04.555878 INFO::Fitting model to feature number 305, HILp_QI20983
+2026-06-02 12:12:04.582605 INFO::Fitting model to feature number 306, HILp_QI12657
+2026-06-02 12:12:04.608032 INFO::Fitting model to feature number 307, HILp_QI7320
+2026-06-02 12:12:04.633674 INFO::Fitting model to feature number 308, C18n_QI9999
+2026-06-02 12:12:04.657402 INFO::Fitting model to feature number 309, HILn_QI2121
+2026-06-02 12:12:04.70104 INFO::Fitting model to feature number 310, HILn_QI3776
+2026-06-02 12:12:04.726949 INFO::Fitting model to feature number 311, HILp_QI17524
+2026-06-02 12:12:04.752982 INFO::Fitting model to feature number 312, HILp_QI21790
+2026-06-02 12:12:04.781356 INFO::Fitting model to feature number 313, HILp_QI10340
+2026-06-02 12:12:04.818858 INFO::Fitting model to feature number 314, HILp_QI25216
+2026-06-02 12:12:04.84868 INFO::Fitting model to feature number 315, HILn_QI10465
+2026-06-02 12:12:04.873672 INFO::Fitting model to feature number 316, HILn_QI740
+2026-06-02 12:12:04.900173 INFO::Fitting model to feature number 317, HILp_QI17087
+2026-06-02 12:12:04.92518 INFO::Fitting model to feature number 318, C8p_QI26720
+2026-06-02 12:12:04.962691 INFO::Fitting model to feature number 319, C18n_QI13915
+2026-06-02 12:12:04.994712 INFO::Fitting model to feature number 320, C8p_QI20218
+2026-06-02 12:12:05.019557 INFO::Fitting model to feature number 321, HILp_QI22553
+2026-06-02 12:12:05.044397 INFO::Fitting model to feature number 322, C8p_QI13856
+2026-06-02 12:12:05.070441 INFO::Fitting model to feature number 323, C8p_QI15972
+2026-06-02 12:12:05.108819 INFO::Fitting model to feature number 324, HILp_QI16119
+2026-06-02 12:12:05.134858 INFO::Fitting model to feature number 325, HILp_QI25112
+2026-06-02 12:12:05.159946 INFO::Fitting model to feature number 326, C18n_QI5197
+2026-06-02 12:12:05.184565 INFO::Fitting model to feature number 327, C18n_QI9442
+2026-06-02 12:12:05.209004 INFO::Fitting model to feature number 328, C18n_TF5
+2026-06-02 12:12:05.249615 INFO::Fitting model to feature number 329, HILp_QI24879
+2026-06-02 12:12:05.275254 INFO::Fitting model to feature number 330, C8p_QI28420
+2026-06-02 12:12:05.300607 INFO::Fitting model to feature number 331, C18n_QI8145
+2026-06-02 12:12:05.325216 INFO::Fitting model to feature number 332, C8p_QI7774
+2026-06-02 12:12:05.350089 INFO::Fitting model to feature number 333, HILp_QI378
+2026-06-02 12:12:05.517214 INFO::Fitting model to feature number 334, HILp_QI18408
+2026-06-02 12:12:05.540792 INFO::Fitting model to feature number 335, HILp_QI18155
+2026-06-02 12:12:05.564062 INFO::Fitting model to feature number 336, C18n_QI13760
+2026-06-02 12:12:05.589015 INFO::Fitting model to feature number 337, HILn_QI10169
+2026-06-02 12:12:05.614055 INFO::Fitting model to feature number 338, C8p_QI17050
+2026-06-02 12:12:05.64848 INFO::Fitting model to feature number 339, HILn_QI1460
+2026-06-02 12:12:05.67232 INFO::Fitting model to feature number 340, C8p_QI28035
+2026-06-02 12:12:05.6974 INFO::Fitting model to feature number 341, C18n_QI6575
+2026-06-02 12:12:05.722885 INFO::Fitting model to feature number 342, HILp_QI16360
+2026-06-02 12:12:05.747638 INFO::Fitting model to feature number 343, HILp_QI22780
+2026-06-02 12:12:05.771772 INFO::Fitting model to feature number 344, C18n_QI13920
+2026-06-02 12:12:05.805551 INFO::Fitting model to feature number 345, C8p_QI27147
+2026-06-02 12:12:05.829623 INFO::Fitting model to feature number 346, HILp_QI14980
+2026-06-02 12:12:05.853306 INFO::Fitting model to feature number 347, HILp_QI16679
+2026-06-02 12:12:05.877203 INFO::Fitting model to feature number 348, HILp_QI18156
+2026-06-02 12:12:05.902591 INFO::Fitting model to feature number 349, HILp_QI8936
+2026-06-02 12:12:05.935399 INFO::Fitting model to feature number 350, HILp_QI18884
+2026-06-02 12:12:05.958845 INFO::Fitting model to feature number 351, HILn_QI1323
+2026-06-02 12:12:05.987869 INFO::Fitting model to feature number 352, HILp_QI8083
+2026-06-02 12:12:06.011965 INFO::Fitting model to feature number 353, HILp_QI19894
+2026-06-02 12:12:06.037422 INFO::Fitting model to feature number 354, C18n_QI3061
+2026-06-02 12:12:06.061674 INFO::Fitting model to feature number 355, C18n_QI13593
+2026-06-02 12:12:06.100459 INFO::Fitting model to feature number 356, HILp_QI25294
+2026-06-02 12:12:06.124058 INFO::Fitting model to feature number 357, HILp_QI16779
+2026-06-02 12:12:06.147318 INFO::Fitting model to feature number 358, HILn_QI5070
+2026-06-02 12:12:06.173386 INFO::Fitting model to feature number 359, HILp_QI19704
+2026-06-02 12:12:06.197842 INFO::Fitting model to feature number 360, C8p_QI11909
+2026-06-02 12:12:06.231264 INFO::Fitting model to feature number 361, C8p_QI28759
+2026-06-02 12:12:06.255771 INFO::Fitting model to feature number 362, C8p_QI8017
+2026-06-02 12:12:06.279457 INFO::Fitting model to feature number 363, HILp_QI22151
+2026-06-02 12:12:06.304232 INFO::Fitting model to feature number 364, HILp_QI13144
+2026-06-02 12:12:06.327461 INFO::Fitting model to feature number 365, HILp_QI14055
+2026-06-02 12:12:06.351005 INFO::Fitting model to feature number 366, HILp_QI13606
+2026-06-02 12:12:06.384578 INFO::Fitting model to feature number 367, HILp_QI9431
+2026-06-02 12:12:06.40866 INFO::Fitting model to feature number 368, HILp_QI9317
+2026-06-02 12:12:06.432484 INFO::Fitting model to feature number 369, HILp_QI22010
+2026-06-02 12:12:06.45653 INFO::Fitting model to feature number 370, HILn_TF6
+2026-06-02 12:12:06.480459 INFO::Fitting model to feature number 371, C18n_QI8237
+2026-06-02 12:12:06.513454 INFO::Fitting model to feature number 372, HILp_QI11558
+2026-06-02 12:12:06.538166 INFO::Fitting model to feature number 373, HILp_QI9050
+2026-06-02 12:12:06.56162 INFO::Fitting model to feature number 374, HILp_QI25155
+2026-06-02 12:12:06.584548 INFO::Fitting model to feature number 375, HILp_QI13563
+2026-06-02 12:12:06.609524 INFO::Fitting model to feature number 376, HILp_QI16819
+2026-06-02 12:12:06.633075 INFO::Fitting model to feature number 377, HILp_QI25076
+2026-06-02 12:12:06.666643 INFO::Fitting model to feature number 378, HILn_QI32559
+2026-06-02 12:12:06.693497 INFO::Fitting model to feature number 379, HILn_QI2203
+2026-06-02 12:12:06.72184 INFO::Fitting model to feature number 380, C8p_QI24566
+2026-06-02 12:12:06.746841 INFO::Fitting model to feature number 381, C18n_QI12734
+2026-06-02 12:12:06.772456 INFO::Fitting model to feature number 382, HILp_QI12781
+2026-06-02 12:12:06.806739 INFO::Fitting model to feature number 383, HILp_QI20096
+2026-06-02 12:12:06.831409 INFO::Fitting model to feature number 384, HILp_QI24992
+2026-06-02 12:12:06.857785 INFO::Fitting model to feature number 385, HILp_QI24353
+2026-06-02 12:12:06.882586 INFO::Fitting model to feature number 386, C18n_QI13913
+2026-06-02 12:12:06.907869 INFO::Fitting model to feature number 387, C18n_QI6872
+2026-06-02 12:12:06.93394 INFO::Fitting model to feature number 388, C18n_QI13156
+2026-06-02 12:12:06.968003 INFO::Fitting model to feature number 389, HILp_QI18825
+2026-06-02 12:12:06.992731 INFO::Fitting model to feature number 390, HILp_QI10262
+2026-06-02 12:12:07.018305 INFO::Fitting model to feature number 391, C18n_QI1037
+2026-06-02 12:12:07.048292 INFO::Fitting model to feature number 392, HILp_QI17209
+2026-06-02 12:12:07.072731 INFO::Fitting model to feature number 393, C18n_QI8998
+2026-06-02 12:12:07.112913 INFO::Fitting model to feature number 394, C18n_QI13829
+2026-06-02 12:12:07.141119 INFO::Fitting model to feature number 395, HILp_QI25039
+2026-06-02 12:12:07.16829 INFO::Fitting model to feature number 396, C8p_QI25726
+2026-06-02 12:12:07.19113 INFO::Fitting model to feature number 397, C8p_QI25015
+2026-06-02 12:12:07.215972 INFO::Fitting model to feature number 398, HILp_QI16416
+2026-06-02 12:12:07.239951 INFO::Fitting model to feature number 399, HILp_QI21862
+2026-06-02 12:12:07.273257 INFO::Fitting model to feature number 400, C18n_QI13170
+2026-06-02 12:12:07.296856 INFO::Fitting model to feature number 401, HILp_QI23682
+2026-06-02 12:12:07.320904 INFO::Fitting model to feature number 402, C18n_QI8202
+2026-06-02 12:12:07.345225 INFO::Fitting model to feature number 403, HILp_QI12706
+2026-06-02 12:12:07.369429 INFO::Fitting model to feature number 404, HILp_QI2003
+2026-06-02 12:12:07.402215 INFO::Fitting model to feature number 405, HILp_QI20455
+2026-06-02 12:12:07.425963 INFO::Fitting model to feature number 406, C8p_QI7663
+2026-06-02 12:12:07.45335 INFO::Fitting model to feature number 407, HILn_QI1477
+2026-06-02 12:12:07.476306 INFO::Fitting model to feature number 408, HILp_QI12797
+2026-06-02 12:12:07.500495 INFO::Fitting model to feature number 409, HILn_QI1552
+2026-06-02 12:12:07.523871 INFO::Fitting model to feature number 410, HILp_QI8769
+2026-06-02 12:12:07.556119 INFO::Fitting model to feature number 411, HILp_QI4857
+2026-06-02 12:12:07.579876 INFO::Fitting model to feature number 412, HILp_QI19842
+2026-06-02 12:12:07.603998 INFO::Fitting model to feature number 413, C8p_QI7916
+2026-06-02 12:12:07.627485 INFO::Fitting model to feature number 414, HILn_QI1737
+2026-06-02 12:12:07.652635 INFO::Fitting model to feature number 415, HILp_QI18646
+2026-06-02 12:12:07.687077 INFO::Fitting model to feature number 416, HILp_QI16359
+2026-06-02 12:12:07.711189 INFO::Fitting model to feature number 417, HILp_QI15946
+2026-06-02 12:12:07.735037 INFO::Fitting model to feature number 418, C8p_QI25225
+2026-06-02 12:12:07.759194 INFO::Fitting model to feature number 419, C18n_QI13770
+2026-06-02 12:12:07.783875 INFO::Fitting model to feature number 420, HILp_QI11954
+2026-06-02 12:12:07.807782 INFO::Fitting model to feature number 421, HILp_QI7592
+2026-06-02 12:12:07.841122 INFO::Fitting model to feature number 422, HILp_QI13561
+2026-06-02 12:12:07.871343 INFO::Fitting model to feature number 423, HILn_QI1228
+2026-06-02 12:12:07.895452 INFO::Fitting model to feature number 424, HILp_QI23420
+2026-06-02 12:12:07.919436 INFO::Fitting model to feature number 425, C18n_QI8357
+2026-06-02 12:12:07.942638 INFO::Fitting model to feature number 426, HILp_QI24228
+2026-06-02 12:12:07.975747 INFO::Fitting model to feature number 427, C8p_QI18724
+2026-06-02 12:12:08.000001 INFO::Fitting model to feature number 428, HILp_QI11943
+2026-06-02 12:12:08.02527 INFO::Fitting model to feature number 429, HILn_QI14750
+2026-06-02 12:12:08.049009 INFO::Fitting model to feature number 430, C18n_QI8931
+2026-06-02 12:12:08.07334 INFO::Fitting model to feature number 431, HILp_QI21908
+2026-06-02 12:12:08.098058 INFO::Fitting model to feature number 432, HILp_QI12803
+2026-06-02 12:12:08.131397 INFO::Fitting model to feature number 433, HILp_QI23880
+2026-06-02 12:12:08.15594 INFO::Fitting model to feature number 434, HILp_QI22235
+2026-06-02 12:12:08.17971 INFO::Fitting model to feature number 435, C8p_QI26266
+2026-06-02 12:12:08.203854 INFO::Fitting model to feature number 436, HILn_QI2231
+2026-06-02 12:12:08.226958 INFO::Fitting model to feature number 437, C8p_QI28764
+2026-06-02 12:12:08.260863 INFO::Fitting model to feature number 438, HILp_QI15492
+2026-06-02 12:12:08.284512 INFO::Fitting model to feature number 439, HILp_QI15013
+2026-06-02 12:12:08.308345 INFO::Fitting model to feature number 440, HILp_QI24369
+2026-06-02 12:12:08.331388 INFO::Fitting model to feature number 441, HILp_TF14
+2026-06-02 12:12:08.354751 INFO::Fitting model to feature number 442, HILp_QI13846
+2026-06-02 12:12:08.380104 INFO::Fitting model to feature number 443, HILp_QI7598
+2026-06-02 12:12:08.414326 INFO::Fitting model to feature number 444, HILn_QI2178
+2026-06-02 12:12:08.438141 INFO::Fitting model to feature number 445, HILp_QI10347
+2026-06-02 12:12:08.463009 INFO::Fitting model to feature number 446, HILn_QI2332
+2026-06-02 12:12:08.488654 INFO::Fitting model to feature number 447, HILp_QI18482
+2026-06-02 12:12:08.513829 INFO::Fitting model to feature number 448, C18n_QI12808
+2026-06-02 12:12:08.551076 INFO::Fitting model to feature number 449, C18n_QI3158
+2026-06-02 12:12:08.57543 INFO::Fitting model to feature number 450, HILp_QI16121
+2026-06-02 12:12:08.598922 INFO::Fitting model to feature number 451, C8p_QI27013
+2026-06-02 12:12:08.623338 INFO::Fitting model to feature number 452, C18n_QI8082
+2026-06-02 12:12:08.646626 INFO::Fitting model to feature number 453, HILp_QI10272
+2026-06-02 12:12:08.671587 INFO::Fitting model to feature number 454, HILn_QI4049
+2026-06-02 12:12:08.707091 INFO::Fitting model to feature number 455, HILp_QI24354
+2026-06-02 12:12:08.730233 INFO::Fitting model to feature number 456, HILp_QI12520
+2026-06-02 12:12:08.753882 INFO::Fitting model to feature number 457, HILp_QI20959
+2026-06-02 12:12:08.777702 INFO::Fitting model to feature number 458, C8p_QI28731
+2026-06-02 12:12:08.801429 INFO::Fitting model to feature number 459, HILn_QI957
+2026-06-02 12:12:08.835086 INFO::Fitting model to feature number 460, HILp_QI13194
+2026-06-02 12:12:08.859356 INFO::Fitting model to feature number 461, C8p_QI19537
+2026-06-02 12:12:08.887592 INFO::Fitting model to feature number 462, HILp_QI14149
+2026-06-02 12:12:08.912834 INFO::Fitting model to feature number 463, HILp_QI14093
+2026-06-02 12:12:08.938212 INFO::Fitting model to feature number 464, HILp_QI14193
+2026-06-02 12:12:08.961754 INFO::Fitting model to feature number 465, HILp_QI23305
+2026-06-02 12:12:08.996826 INFO::Fitting model to feature number 466, C8p_QI10754
+2026-06-02 12:12:09.02194 INFO::Fitting model to feature number 467, HILn_QI25680
+2026-06-02 12:12:09.045893 INFO::Fitting model to feature number 468, HILp_QI10785
+2026-06-02 12:12:09.070263 INFO::Fitting model to feature number 469, C18n_QI13333
+2026-06-02 12:12:09.094459 INFO::Fitting model to feature number 470, C8p_QI5111
+2026-06-02 12:12:09.127722 INFO::Fitting model to feature number 471, C18n_QI8876
+2026-06-02 12:12:09.155295 INFO::Fitting model to feature number 472, HILp_QI16269
+2026-06-02 12:12:09.179098 INFO::Fitting model to feature number 473, HILp_QI14363
+2026-06-02 12:12:09.20346 INFO::Fitting model to feature number 474, HILp_QI11549
+2026-06-02 12:12:09.227253 INFO::Fitting model to feature number 475, HILp_QI13784
+2026-06-02 12:12:09.251621 INFO::Fitting model to feature number 476, C8p_QI25895
+2026-06-02 12:12:09.286535 INFO::Fitting model to feature number 477, C8p_QI21966
+2026-06-02 12:12:09.310379 INFO::Fitting model to feature number 478, HILp_QI10124
+2026-06-02 12:12:09.333856 INFO::Fitting model to feature number 479, C8p_QI5201
+2026-06-02 12:12:09.357641 INFO::Fitting model to feature number 480, C8p_QI4900
+2026-06-02 12:12:09.381195 INFO::Fitting model to feature number 481, HILp_QI13616
+2026-06-02 12:12:09.406394 INFO::Fitting model to feature number 482, C8p_QI28181
+2026-06-02 12:12:09.439326 INFO::Fitting model to feature number 483, C8p_QI28647
+2026-06-02 12:12:09.463235 INFO::Fitting model to feature number 484, HILp_QI11066
+2026-06-02 12:12:09.48638 INFO::Fitting model to feature number 485, HILn_QI2542
+2026-06-02 12:12:09.510368 INFO::Fitting model to feature number 486, HILp_QI21480
+2026-06-02 12:12:09.533623 INFO::Fitting model to feature number 487, HILp_QI11443
+2026-06-02 12:12:09.568541 INFO::Fitting model to feature number 488, C18n_QI2510
+2026-06-02 12:12:09.592619 INFO::Fitting model to feature number 489, HILp_QI25032
+2026-06-02 12:12:09.616419 INFO::Fitting model to feature number 490, C8p_QI20826
+2026-06-02 12:12:09.63946 INFO::Fitting model to feature number 491, HILp_QI20012
+2026-06-02 12:12:09.663174 INFO::Fitting model to feature number 492, HILp_QI8757
+2026-06-02 12:12:09.688026 INFO::Fitting model to feature number 493, HILn_QI4812
+2026-06-02 12:12:09.723153 INFO::Fitting model to feature number 494, HILp_QI21535
+2026-06-02 12:12:09.746836 INFO::Fitting model to feature number 495, C18n_QI1615
+2026-06-02 12:12:09.771495 INFO::Fitting model to feature number 496, HILp_QI21186
+2026-06-02 12:12:09.797749 INFO::Fitting model to feature number 497, C8p_QI27409
+2026-06-02 12:12:09.821384 INFO::Fitting model to feature number 498, HILp_QI20949
+2026-06-02 12:12:09.855748 INFO::Fitting model to feature number 499, HILp_QI24490
+2026-06-02 12:12:09.879907 INFO::Fitting model to feature number 500, C18n_QI6117
+2026-06-02 12:12:09.930383 INFO::Counting total values for each feature
+2026-06-02 12:12:09.950317 INFO::Writing filtered data to file results/maaslin2/metabolomics/features/filtered_data.tsv
+2026-06-02 12:12:10.070924 INFO::Writing filtered, normalized data to file results/maaslin2/metabolomics/features/filtered_data_norm.tsv
+2026-06-02 12:12:10.201868 INFO::Writing filtered, normalized, transformed data to file results/maaslin2/metabolomics/features/filtered_data_norm_transformed.tsv
+2026-06-02 12:12:10.309607 INFO::Writing residuals to file results/maaslin2/metabolomics/fits/residuals.rds
+2026-06-02 12:12:10.381078 INFO::Writing fitted values to file results/maaslin2/metabolomics/fits/fitted.rds
+2026-06-02 12:12:10.427872 INFO::Writing extracted random effects to file results/maaslin2/metabolomics/fits/ranef.rds
+2026-06-02 12:12:10.466033 INFO::Writing all results to file (ordered by increasing q-values): results/maaslin2/metabolomics/all_results.tsv
+2026-06-02 12:12:10.474987 INFO::Writing the significant results (those which are less than or equal to the threshold of 0.250000 ) to file (ordered by increasing q-values): results/maaslin2/metabolomics/significant_results.tsv
+2026-06-02 12:12:10.487537 INFO::Writing heatmap of significant results to file: results/maaslin2/metabolomics/heatmap.pdf
+
+Metabolomics MaAsLin2 complete!
+
+=== Step 5: Summarizing results ===
+
+--- Microbiome results ---
+Total species-diagnosis tests: 244 
+Significant (q < 0.25): 23 
+
+Top 10 IBD-associated species:
+                             feature  metadata      coef      qval
+1               s__Eggerthella_lenta diagnosis  1.569030 0.1718345
+2            s__Alistipes_putredinis diagnosis -4.565393 0.1718345
+3      s__Clostridium_bolteae_CAG_59 diagnosis  2.362500 0.1718345
+4          s__Clostridium_sp_CAG_242 diagnosis  2.039631 0.1718345
+5            s__Ruminococcus_torques diagnosis -3.041360 0.1718345
+6         s__Roseburia_inulinivorans diagnosis -2.922410 0.1718345
+7  s__Anaeromassilibacillus_sp_An250 diagnosis  2.216820 0.1718345
+8          s__Flavonifractor_plautii diagnosis  3.155246 0.1718345
+9          s__Flavonifractor_plautii diagnosis  2.944549 0.1718345
+10              s__Dielma_fastidiosa diagnosis  1.861123 0.1718345
+
+--- Metabolomics results ---
+Total metabolite-diagnosis tests: 1000 
+Significant (q < 0.25): 559 
+
+Top 10 IBD-associated metabolites:
+       feature  metadata     coef         qval
+1  C18n_QI6575 diagnosis 12.79816 8.113910e-10
+2  C18n_QI3061 diagnosis 13.16848 8.113910e-10
+3  HILn_QI1058 diagnosis 13.95888 1.289513e-09
+4  C18n_QI3676 diagnosis 12.98843 5.616647e-09
+5   C18n_QI201 diagnosis 13.54642 6.782699e-09
+6  HILp_QI8712 diagnosis 15.30657 1.192673e-08
+7   HILn_QI999 diagnosis 13.75982 1.478296e-08
+8  HILp_QI4857 diagnosis 11.86448 1.478296e-08
+9  HILp_QI1201 diagnosis 14.37762 1.661363e-08
+10 HILn_QI1296 diagnosis 14.27069 2.599852e-08
+
+Saved: results/maaslin2/significant_species.csv
+Saved: results/maaslin2/significant_metabolites.csv
+
+=== Script 04 complete! ===
+These results feed directly into Script 05 (mixOmics)
+where we find which dysregulated microbes and metabolites
+co-vary together across patients.

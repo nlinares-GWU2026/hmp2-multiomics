@@ -245,3 +245,7 @@ cat("Component 1 X-Y correlation:", round(cor1, 3), "\n")
 cat("Component 2 X-Y correlation:", round(cor2, 3), "\n")
 cat("Selected", nrow(loadings_mgx), "species and",
     nrow(loadings_mbx), "metabolites total\n")
+
+# Save the spls object so script 06 can load it without re-running
+saveRDS(spls_result, "results/mixomics/spls_result.rds")
+cat("Saved: results/mixomics/spls_result.rds\n")

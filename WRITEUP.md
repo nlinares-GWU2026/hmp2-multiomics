@@ -45,3 +45,28 @@ The Human Microbiome Project Phase 2, also known as the Integrative Human Microb
   Sample-level clinical variables, including diagnosis (CD, UC, nonIBD), participant ID, and collection week
 
 ---
+
+## Methods 
+
+### Environment
+
+All analysis was performed in R (version 4.3.3) running on Ubuntu 24.04 via WSL2 on Windows. Key packages include: `Maaslin2` (v1.15.1), `mixOmics` (v6.26.0), `dplyr`, `readr`, `ggplot2`, `ggrepel`, `pheatmap`.
+
+### Microbiome Preprocessing (`02_preprocess_microbiome.R`)
+The raw taxonomic profiles comprised 932 rows, spanning all taxonomic levels (from kingdom to species). I filtered to species-level rows only (those containing `s__` but not `t__`, the *strain* level), retaining 578 species. Samples were matched to metadata using the External ID field after stripping suffixes, yielding 1,317 matched samples. Species present in fewer than 10%  of samples were removed as too rare to find reliable associations, leaving 122 species. Because microbiome abundance data is compositional (all values sum to 100%), I applied a Centered Log-Ratio (CLR) transformation, which is the standard normalization for this data type. CLR transforms each species abundance by dividing it by the geometric mean (the average used for numbers that multiply together rather than add together) of all species in that sample and then taking the log, making the data approximately normal and suitable for linear models. 
+
+### Metabolomics Preprocessing (`03_preprocess_metabolomics.R`) 
+
+The raw metabolomics data contained 81, 867 chemical features (mass spectrometry peaks) across 546 samples. After matching to samples that also had microbiome data, 388 samples remained. Features missing in more than 80% of samples were removed (indicating that the chemical was detected too rarely to be informative), leaving 66,717 features. A log2(x + 1) transformation was applied to compress the enormous dynamic range of raw mass spectrometry intensities (which spanned from 0 to 1.08 x 10^14) into a workable range of 0 to 46.6.
+
+### Sample Matching for Integration
+
+The final integrated dataset consisted of 388 samples with complete data from both assays: 181 CD, 102 UC, and 105 nonIBD. These 388 samples form the basis for all downstream analysis. 
+
+### MaAsLin2 Association Testing (`04_run_maaslin2.R`)
+
+MaAsLin2 (Multivariate Association Discovery in Population-Scale Meta-Omics Studies) fits a linear mixed model for each feature against each metadata variable. Rather than attempting to fit all 122 species and 66, 717 metabolites into a single model (which would lack sufficient statistical power given the sample size of 388), I ran MaAsLin2 in two separate passes: 
+
+**Run 1:** Microbiome species as features, IBD diagnosis as the fixed effect. This identifies which bacterial species are significantly enriched or depleted in CD and UC patients compared to nonIBD controls. 
+
+**Run 2:** Top 500 most variable metabolites as features, IBD diagnosis as the fixed effect. This identifies which metabolites are significantly elevated or reduced in IBD patients. 

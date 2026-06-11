@@ -67,6 +67,41 @@ The final integrated dataset consisted of 388 samples with complete data from bo
 
 MaAsLin2 (Multivariate Association Discovery in Population-Scale Meta-Omics Studies) fits a linear mixed model for each feature against each metadata variable. Rather than attempting to fit all 122 species and 66, 717 metabolites into a single model (which would lack sufficient statistical power given the sample size of 388), I ran MaAsLin2 in two separate passes: 
 
-**Run 1:** Microbiome species as features, IBD diagnosis as the fixed effect. This identifies which bacterial species are significantly enriched or depleted in CD and UC patients compared to nonIBD controls. 
+**Run 1:** Microbiome species as features, IBD diagnosis as the fixed effect. *This identifies which bacterial species are significantly enriched or depleted in CD and UC patients compared to nonIBD controls.*
 
-**Run 2:** Top 500 most variable metabolites as features, IBD diagnosis as the fixed effect. This identifies which metabolites are significantly elevated or reduced in IBD patients. 
+**Run 2:** Top 500 most variable metabolites as features, IBD diagnosis as the fixed effect. *This identifies which metabolites are significantly elevated or reduced in IBD patients.* 
+
+In both runs, participant ID was included as a random effect to account for repeated measures (the same patient sampled multiple times over the year). The reference level for diagnosis was set to `nonIBD`. All data was pre-normalized, so normalization and transformation were set to `NONE`. Significance was determined using a false discovery rate (FDR) of q < 0.25, the conventional benchmark for MaAsLin2 analysis. 
+
+### Sparse CCA via mixOmics (`05_run_mixomics.R`)
+
+Sparse Canonical Correlation Analysis (sparse CCA) finds groups of features from two datasets that vary together across samples. Rather than testing one feature at a time, it asks: *which linear combination of bacterial species, when compared to which linear combination of metabolites, produces the maximum correlation across patients?* The "sparse" constraint forces most weights to zero, so instead of all 122 species contributing weakly, only the most informative ones are selected per component. 
+
+I used the `spls()` function from mixOmics with `mode = "canonical"`, which implements sparse CCA. Parameters were set to `ncomp = 2` (two components), `keepX = c(15, 15)` (15 species selected per component), and `keepY = c(50, 50)` (50 metabolites selected per component). The input matrices were the same 388-sample microbiome CLR matrix (X) and the top 500 most variable log2-transformed metabolites (Y). 
+
+---
+
+## Results
+
+### MaAsLin2: IBD-Associated Microbiome Shifts
+
+Of the 244 species-diagnosis association sets (122 species x 2 comparisons), 23 were significant at q < 0.25. The results show a clear biological pattern: IBD patients have a depletion of bacteria known to produce anti-inflammatory short-chain fatty acids, alongside an enrichment of bacteria associated with mucosal inflammation. 
+
+**Species DEPLETED in IBD (health-associated):**
+
+- ***Alistipes putredinis*** - Produces short-chain fatty acids; anti-inflammatory
+- ***Alistipes shahii*** - Associated with gut barrier protection
+- ***Oscillibacter* sp 57_20** - Produces valerate; anti-inflammatory
+- ***Barnesiella intestinihominis*** - Reduced in multiple IBD studies
+
+**Species enriched in IBD:**
+
+- ***Flavonifractor plautii*** - Associated with IBD in multiple cohorts
+- ***Ruminococcus gnavus*** - Mucus-degrading; elevated in Crohn's disease
+- ***Clostridium symbiosum*** - Pro-inflammatory; associated with dysbiosis
+- ***Erysipelatoclostridium ramosum*** - Elevated in gut inflammation
+- ***Clostridium clostridioforme*** - Associated with mucosal inflammation
+
+### MaAsLin2: IBD-Associated Metabolomics Shifts
+
+

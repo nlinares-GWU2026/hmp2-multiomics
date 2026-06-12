@@ -65,17 +65,17 @@ The final integrated dataset consisted of 388 samples with complete data from bo
 
 ### MaAsLin2 Association Testing (`04_run_maaslin2.R`)
 
-MaAsLin2 (Multivariate Association Discovery in Population-Scale Meta-Omics Studies) fits a linear mixed model for each feature against each metadata variable. Rather than attempting to fit all 122 species and 66, 717 metabolites into a single model (which would lack sufficient statistical power given the sample size of 388), I ran MaAsLin2 in two separate passes: 
+MaAsLin2 (Multivariate Association Discovery in Population-Scale Meta-Omics Studies) fits a linear mixed model for each feature against each metadata variable. It tests every single biological feature, such as a specific type of bacteria, against every piece of metadata (age, diet, or whether the patient has IBD). Rather than attempting to fit all 122 species and 66, 717 metabolites into a single model (which would lack sufficient statistical power given the sample size of 388), I ran MaAsLin2 in two separate passes: 
 
 **Run 1:** Microbiome species as features, IBD diagnosis as the fixed effect. *This identifies which bacterial species are significantly enriched or depleted in CD and UC patients compared to nonIBD controls.*
 
 **Run 2:** Top 500 most variable metabolites as features, IBD diagnosis as the fixed effect. *This identifies which metabolites are significantly elevated or reduced in IBD patients.* 
 
-In both runs, participant ID was included as a random effect to account for repeated measures (the same patient sampled multiple times over the year). The reference level for diagnosis was set to `nonIBD`. All data was pre-normalized, so normalization and transformation were set to `NONE`. Significance was determined using a false discovery rate (FDR) of q < 0.25, the conventional benchmark for MaAsLin2 analysis. 
+In both runs, participant ID was included as a random effect to account for repeated measures (the same patient sampled multiple times over the year). The reference level for diagnosis was set to `nonIBD` to have a baseline of comparison. All data was pre-normalized, so normalization and transformation were set to `NONE` to prevent a second cleaning that could skew results. Significance was determined using a false discovery rate (FDR) of q < 0.25, the conventional benchmark for MaAsLin2 analysis. Simply, out of all the microbes found that are deemed interesting, 25% might actually be insignificant, but the remaining 75% will have real significance. 
 
 ### Sparse CCA via mixOmics (`05_run_mixomics.R`)
 
-Sparse Canonical Correlation Analysis (sparse CCA) finds groups of features from two datasets that vary together across samples. Rather than testing one feature at a time, it asks: *which linear combination of bacterial species, when compared to which linear combination of metabolites, produces the maximum correlation across patients?* The "sparse" constraint forces most weights to zero, so instead of all 122 species contributing weakly, only the most informative ones are selected per component. 
+Sparse Canonical Correlation Analysis (sparse CCA) identifies groups of features from two datasets that covary across samples. Rather than testing one feature at a time, it asks: *which linear combination of bacterial species, when compared to which linear combination of metabolites, produces the maximum correlation across patients?* The "sparse" constraint forces most weights to zero, so instead of all 122 species contributing weakly, only the most informative ones are selected per component. 
 
 I used the `spls()` function from mixOmics with `mode = "canonical"`, which implements sparse CCA. Parameters were set to `ncomp = 2` (two components), `keepX = c(15, 15)` (15 species selected per component), and `keepY = c(50, 50)` (50 metabolites selected per component). The input matrices were the same 388-sample microbiome CLR matrix (X) and the top 500 most variable log2-transformed metabolites (Y). 
 
@@ -104,4 +104,25 @@ Of the 244 species-diagnosis association sets (122 species x 2 comparisons), 23 
 
 ### MaAsLin2: IBD-Associated Metabolomics Shifts
 
+Of the 1,000 metabolite-diagnosis tests (500 metabolites x 2 comparisons), 559 were significant at q < 0.25, a very high proportion that reflects the known sensitivity of metabolomics to gut inflammatory states. The top-ranked metabolites had q-values as low as 8.1 x 10^-10, indicating extremely strong associations and a very low chance that these findings were chance. 
 
+The majority of IBD-associated metabolite features were detected in HILIC positive mode (HILp), a mass spectrometry method particularly sensitive to picking up lipids, bile acids, and amino acid derivatives. This is consistent with published findings showing that bile acid profiles are severely disrupted in IBD, with secondary bile acids (which require microbial processing) being dramatically reduced. 
+
+### Sparse CCA: Co-varying Microbiome-Metabolite Patterns
+
+The sparse CCA identified two components of co-variation between the microbiome and metabolomics datasets: 
+
+- **Component 1:** X-Y correlation = 0.733 (strong)
+- **Component 2:** X-Y correlation = 0.617 (moderate)
+
+Component 1 captured the dominant axis of microbe-metabolome co-variation, which aligned strongly with the IBD vs healthy distinction. This component revealed that changes in the gut bacteria (the microbiome) and changes in the gut chemicals (the metabolome) are moving in sync with each other. The sample plot revealed an important asymmetry: patients separated more clearly by diagnosis in the metabolomics space (Block Y) than in the microbiome space (Block X). This suggests that while both data are affected in IBD, the chemical environment of the gut reflects the disease state more consistently than bacterial composition alone. This finding is consistent with the HMP2 paper (Lloyd-Price et al., Nature 2019). 
+
+**Species driving Component 1 (IBD-enriched direction):**
+*Clostridium symbiosum*, *Erysipelatoclostridium ramosum*, *Clostridium clostridioforme*, *Flavonifractor plautii*, *Ruminococcus gnavus*
+
+**Species driving Component 1 (health-associated direction):**
+*Alistipes putredinis*, *Alistipes shahii*, *Oscillibacter* sp 57_20, *Barnesiella intestinihominis*
+
+The correlation heatmap (Figure 5) revealed a clear reciprocal structure: the IBD-enriched bacteria are positively correlated with one cluster of metabolites and negatively correlated with another. The health-associated bacteria show the exact opposite pattern. This reciprocal signature, where a loss of protective bacteria coincides with a gain of inflammatory ones, and these two groups have opposing metabolite profiles, represents the main multi-omics finding of this analysis.  
+
+The strongest positive metabolite signal co-elevated with IBD-associated bacteria was a HILIC positive mode feature (HILp_QI20096). Consistent with a lipid or modified bile acid class, this specific chemical was elevated during inflammation and increased alongside the proliferation of harmful gut bacteria. The dominant negative metabolite cluster (HILp_QI22835 and related features) represents a class of compounds depleted in IBD and decreases alongside the loss of healthy gut bacteria.

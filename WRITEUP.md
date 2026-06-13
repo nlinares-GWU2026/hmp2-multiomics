@@ -126,3 +126,42 @@ Component 1 captured the dominant axis of microbe-metabolome co-variation, which
 The correlation heatmap (Figure 5) revealed a clear reciprocal structure: the IBD-enriched bacteria are positively correlated with one cluster of metabolites and negatively correlated with another. The health-associated bacteria show the exact opposite pattern. This reciprocal signature, where a loss of protective bacteria coincides with a gain of inflammatory ones, and these two groups have opposing metabolite profiles, represents the main multi-omics finding of this analysis.  
 
 The strongest positive metabolite signal co-elevated with IBD-associated bacteria was a HILIC positive mode feature (HILp_QI20096). Consistent with a lipid or modified bile acid class, this specific chemical was elevated during inflammation and increased alongside the proliferation of harmful gut bacteria. The dominant negative metabolite cluster (HILp_QI22835 and related features) represents a class of compounds depleted in IBD and decreases alongside the loss of healthy gut bacteria.
+
+### Cross-Validation Between Methods
+
+A key quality check of any analysis is consistency across methods. In this project, the same microbial species appeared as significant in both MaAsLin2 (tests each microbe one by one against disease) and sparse CCA (looks at how groups of microbes and chemicals change together):
+
+- *Flavonifractor plautii* - significant in both MaAsLin2 and Component 1
+- *Alistipes putredinis* - significant in both MaAsLin2 and Component 1
+- *Ruminococcus gnavus* - significant in both MaAsLin2 and Component 1
+
+This convergence between two independent statistical methods on the same species provides strong evidence that these findings reflect a genuine biological signal rather than statistical artifacts. 
+
+## Limitations
+
+**Metabolite identity:** The metabolomics features in this dataset are identified by their mass-to-charge ratio and chromatographic retention time (physical traits), not confirmed by official chemical names. Features labeled HILp_QI20096, for example, point towards specific chemical classes but would require further testing (spectral matching or chemical standards) to confirm their identity. This is a standard limitation of untargeted metabolomics. 
+
+**Correlation does not equal causation:** While sparse CCA identifies bacteria and metabolites that co-vary together, it cannot establish whether the bacteria produce the metabolites, whether the metabolites recruit the bacteria, or whether both are driven by a third factor (such as diet or host genetics). Establishing causality would require experimental validation. 
+
+**Repeated measures:** The dataset contains multiple samples per patient taken over time. While participant ID was included as a random effect in MaAsLin2 to account for this, the sparse CCA was run treating all samples as independent. A longitudinal analysis is a logical progression of this project. 
+
+**Sample size for integration:** Only 388 of the 1,638 metagenomics samples had paired metabolomics data. This mismatch reflects the real-world challenge of collecting multiple types of lab data (assays) from the same samples, and limits the statistical power to find meaningful links between them. 
+
+---
+
+## Conclusion
+
+This analysis reproduces and extends core findings from the HMP2 flagship study using a fully scripted, publicly reproducible pipeline. The gut microbiome in IBD patients shows consistent depletion of short-chain fatty acid producers (*Alistipes*, *Oscillibacter*) and enrichment of inflammatory species (*Flavonifractor*, *Ruminococcus gnavus*, *Clostridium* spp.). These microbial shifts co-vary with broad metabolic disruption, particularly in the lipid and bile-acid-related features, and the metabolomics data separates IBD from healthy patients more cleanly than the microbiome data alone. 
+
+The convergence of MaAsLin2 and sparse CCA on the same key species demonstrates the value of using multiple complementary methods in multi-omics research. Together, these results support a model in which IBD-associated microbiome dysbiosis and metabolite dysregulation are tightly coupled, and suggest that integrative analyses capturing both data types simultaneously will be more informative than analyzing either alone.
+
+## References
+
+Lloyd-Price, J., Arze, C., Bhatt, A.S. et al. (2019). Multi-omics of the gut microbial ecosystem in inflammatory bowel diseases. *Nature*, 569, 655–662.
+https://doi.org/10.1038/s41586-019-1237-9
+
+Mallick, H., Rahnavard, A., McIver, L.J. et al. (2021). Multivariable association discovery in population-scale meta-omics studies. *PLOS Computational Biology*,
+17(11), e1009442.
+
+Rohart, F., Gautier, B., Singh, A., & Lê Cao, K.A. (2017). mixOmics: An R package for 'omics feature selection and multiple data integration. *PLOS Computational
+Biology*, 13(11), e1005752.
